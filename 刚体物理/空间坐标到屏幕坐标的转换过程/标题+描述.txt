@@ -1,0 +1,15 @@
+标题
+The Journey from World Space to the Screen
+
+描述
+
+This video explains how 3D points in world space are transformed step by step into 2D screen coordinates. We walk through the full projection pipeline — from world space to screen space.
+
+00:00 Introduction  
+00:58 Variables & Problem Setup  
+02:49 Mathematical Breakdown  
+05:01 Summary 
+
+
+
+

@@ -1,0 +1,33 @@
+Scene 1
+In the three-dimensional world, the position and orientation of every object are described by a unified spatial system called the world coordinate system. The temple model before you is located at a certain position within this 3D coordinate system. The image we see is not the 3D scene itself, but the result of projecting the three-dimensional information onto a two-dimensional plane called the "camera viewport." This viewport acts like the camera’s screen. How the temple appears on it depends on the camera’s position, orientation, and the projection method. As the camera moves, we observe the temple’s image on the screen changing—sometimes growing larger, sometimes smaller—this is the effect of perspective projection. So, how does the temple, a 3D model in space, finally appear on the 2D screen? In this episode, we will explore this question by diving into one of the most fundamental yet crucial processes in 3D graphics: the conversion from world coordinates to screen coordinates.
+
+Scene 2
+To explore this question, we first need to understand the geometric positions of the variables in space and their relative relationships.
+There is a point called P-zero, which represents the camera’s position—that is, the origin of the camera coordinate system. Its coordinates in 3D space are x-zero, y-zero, and z-zero.
+Next, we define the camera’s viewing direction, which is the direction from P-zero pointing to the target point Q. This direction is defined as the y-axis of the camera’s local coordinate system.
+Then, we determine the camera’s x-axis by calculating the cross product. We take the viewing direction and the vertical direction in the world coordinate system—(0, 1, 0)—and compute their cross product, resulting in a direction perpendicular to both. This direction is the camera’s x-axis.
+Next, we take the cross product of the x-axis and y-axis directions we just found to get the camera’s z-axis—a vector perpendicular to both.
+These three mutually perpendicular direction vectors, x, y, and z, form the camera’s local coordinate system.
+We arrange them into a 3x3 rotation matrix to describe the camera’s orientation.
+Now consider another point P, with coordinates x, y, z in space. We draw a dotted line from the camera origin P-zero pointing to P. The length of this line is called the step length, denoted by the letter t.
+Next, we want to know where this point P projects onto the screen—that is, its 2D coordinates on the screen, x prime and y prime.
+The problem then becomes: given the position of point P in space, along with the camera’s rotation matrix and origin, how do we calculate the step length t and the projected coordinates x prime and y prime on the screen?
+
+Scene 3
+Alright, now that we know the positions of all points and variables in space, let’s put them into equations and start solving.
+First, we have this formula: the camera origin, plus step length t, multiplied by the rotation matrix, then multiplied by a column vector. This vector’s three components are x prime, the number one, and y prime. The result of this calculation is the coordinates of the target point in 3D space.
+Next, we move the camera origin to the right side of the equation, becoming the target point minus the camera origin. This represents the spatial offset of the target point relative to the camera position.
+So we get a new expression: step length t, multiplied by the rotation matrix, multiplied by the column vector [x prime, 1, y prime], equals the target point minus the camera origin.
+We can combine step length t and the screen coordinates into a new 3D vector with components t times x prime, t itself, and t times y prime.
+Multiplying this vector on the left by the rotation matrix R equals the target point minus the camera origin.
+To solve this vector further, we multiply both sides of the equation by the inverse of the rotation matrix R. The left side becomes t times the column vector, and the right side becomes the inverse of the rotation matrix multiplied by the difference between the target point and camera origin.
+Since the middle component of this 3D vector is t, we can directly solve for step length t from it. Specifically, we take the row vector [0, 1, 0], which picks out only the middle component, multiply it by the inverse rotation matrix, then multiply by the difference between the target point and camera origin to get the value of t.
+With t, we substitute back into the formula and compute the projected screen coordinates x prime and y prime through division. The calculation method is as follows:
+We use a matrix with first row [1, 0, 0], second row [0, 0, 1], then multiply by the inverse rotation matrix R, multiply by the difference between the target point and camera origin, and finally divide by step length t.
+The resulting column vector is the projected screen coordinates x prime and y prime.
+In this way, we complete the entire derivation process from 3D spatial coordinates to screen projection coordinates.
+
+Scene 4
+Alright, after this explanation, we have mastered the method of converting points in space to screen coordinates.
+If you enjoyed this content, don’t forget to like, subscribe to the channel, and share it with friends who might find it useful.
+Thanks for your support, and see you next time!

@@ -1,0 +1,321 @@
+// Created by Reinder Nijhoff 2014
+// Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+// @reindernijhoff
+//
+// https://www.shadertoy.com/view/Xtf3zn
+//
+// Tokyo by night in the rain. The car model is made by Eiffie
+// (Shiny Toy': https://www.shadertoy.com/view/ldsGWB). 
+// I have never been in Tokyo btw.
+
+#define BUMPMAP
+#define MARCHSTEPS 128
+#define MARCHSTEPSREFLECTION 48
+#define LIGHTINTENSITY 7.
+
+//----------------------------------------------------------------------
+
+const vec3 backgroundColor = vec3(0.2,0.4,0.6) * 0.09;
+#define time (iTime + 90.)
+
+vec3 int1, int2, nor1;
+vec4 lint1, lint2;
+float dL; // minimal distance to light
+
+//----------------------------------------------------------------------
+// noises
+
+float hash( float n ) {
+    return fract(sin(n)*687.3123);
+}
+
+float noise( in vec2 x ) {
+    vec2 p = floor(x);
+    vec2 f = fract(x);
+    f = f*f*(3.0-2.0*f);
+    float n = p.x + p.y*157.0;
+    return mix(mix( hash(n+  0.0), hash(n+  1.0),f.x),
+               mix( hash(n+157.0), hash(n+158.0),f.x),f.y);
+}
+
+const mat2 m2 = mat2( 0.80, -0.60, 0.60, 0.80 );
+
+float fbm( vec2 p ) {
+    float f = 0.0;
+    f += 0.5000*noise( p ); p = m2*p*2.02;
+    f += 0.2500*noise( p ); p = m2*p*2.03;
+    f += 0.1250*noise( p ); p = m2*p*2.01;
+//    f += 0.0625*noise( p );
+    
+    return f/0.9375;
+}
+
+//----------------------------------------------------------------------
+// distance primitives
+
+float udRoundBox( vec3 p, vec3 b, float r ) {
+  return length(max(abs(p)-b,0.0))-r;
+}
+
+float sdBox( in vec3 p, in vec3 b ) {
+    vec3 d = abs(p) - b;
+    return min(max(d.x,max(d.y,d.z)),0.0) + length(max(d,0.0));
+}
+
+float sdSphere( in vec3 p, in float s ) {
+    return length(p)-s;
+}
+
+float sdCylinder( in vec3 p, in vec2 h ) {
+    vec2 d = abs(vec2(length(p.xz),p.y)) - h;
+    return min(max(d.x,d.y),0.0) + length(max(d,0.0));
+}
+
+
+//----------------------------------------------------------------------
+// distance operators
+
+float opU( float d2, float d1 ) { return min( d1,d2); }
+float opS( float d2, float d1 ) { return max(-d1,d2); }
+float smin( float a, float b, float k ) { return -log(exp(-k*a)+exp(-k*b))/k; } //from iq
+
+//----------------------------------------------------------------------
+// Map functions
+
+float map( const in vec3 p ) {
+	vec3 pd = p;
+    float d;
+    
+    pd.x = abs( pd.x );
+    pd.z *= -sign( p.x );
+    
+    float ch = hash( floor( (pd.z+18.*time)/40. ) );
+    float lh = hash( floor( pd.z/13. ) );
+    
+    vec3 pdm = vec3( pd.x, pd.y, mod( pd.z, 10.) - 5. );
+    //制作路灯
+    dL = sdSphere( vec3(pdm.x-8.5,pdm.y-4.5,pdm.z), 0.3 );
+    //制作水平放置的霓虹灯
+    dL = opU( dL, sdBox( vec3(pdm.x-12., pdm.y-9.5-lh,  mod( pd.z, 91.) - 45.5 ), vec3(0.2,4.5, 0.2) ) );
+    //制作竖直放置的霓虹灯
+    dL = opU( dL, sdBox( vec3(pdm.x-12., pdm.y-11.5+lh, mod( pd.z, 31.) - 15.5 ), vec3(0.22,5.5, 0.2) ) );
+    dL = opU( dL, sdBox( vec3(pdm.x-12., pdm.y-8.5-lh,  mod( pd.z, 41.) - 20.5 ), vec3(0.24,3.5, 0.2) ) );
+    dL = opU( dL, sdBox( vec3(pdm.x-12.5,pdm.y-2.75-lh,  mod( pd.z, 13.) - 6.5 ), vec3(0.1,0.25, 3.2) ) );
+    
+    //用于铺设瓷砖
+    vec3 pm = vec3( mod( pd.x + floor( pd.z * 4. )*0.25, 0.5 ) - 0.25, pd.y, mod( pd.z, 0.25 ) - 0.125 );
+	d = udRoundBox( pm, vec3( 0.245,0.1, 0.12 ), 0.005 ); 
+    //通过交运算让瓷砖在道路两侧
+    d = opS( d, -(p.x+8.) );
+    
+    //这一行代码通过瓷砖与 与y<=0作并集， 实际上产生了马路的部分，即 p.x<8 且 y<=0的部分
+    d = opU( d, pd.y );
+
+    //给道路两侧加两块墙壁
+    d = opU( d, 13.-pd.x );
+    //制作路灯杆
+    d = opU( d, sdCylinder( vec3(pdm.x-8.5, pdm.y, pdm.z), vec2(0.075,4.5)) );
+    d = opU( d, dL );
+    
+	return d;
+}
+
+//----------------------------------------------------------------------
+
+vec3 calcNormalSimple( in vec3 pos ) {   
+    const vec2 e = vec2(1.0,-1.0)*0.005;
+
+    vec3 n = normalize( e.xyy*map( pos + e.xyy ) + 
+					    e.yyx*map( pos + e.yyx )   + 
+					    e.yxy*map( pos + e.yxy )   + 
+					    e.xxx*map( pos + e.xxx )   );  
+    return n;
+}
+
+vec3 calcNormal( in vec3 pos ) {
+    vec3 n = calcNormalSimple( pos );
+    if(pos.y>0.12) return n;
+
+#ifdef BUMPMAP
+    vec2 oc = floor( vec2(pos.x+floor( pos.z * 4. )*0.25, pos.z) * vec2( 2., 4. ) );
+
+    if( abs(pos.x)<8. ) {
+		oc = pos.xz;
+    }
+    
+     vec3 p = pos * 250.;
+   	 vec3 xn = 0.05*vec3(noise(p.xz)-0.5,0.,noise(p.zx)-0.5);
+     xn += 0.1*vec3(fbm(oc.xy)-0.5,0.,fbm(oc.yx)-0.5);
+    
+    n = normalize(  .5 * xn + n );
+#endif
+    
+    return n;
+}
+
+
+
+float intersect( in vec3 ro, in vec3 rd ) {
+	const float precis = 0.001;
+    float h = precis*2.0;
+    float t = 0.;
+    int1 = int2 = vec3( -500. );
+    lint1 = lint2 = vec4( -500. );
+    float mld = 10.;
+    
+	for( int i=0; i < MARCHSTEPS; i++ ) {
+        h = map( ro+rd*t );
+        if(dL < mld){
+			mld=dL;            
+            lint1.xyz = ro+rd*t;
+			lint1.w = abs(dL);
+		}
+        if( h < precis ) {
+            int1.xyz = ro+rd*t;
+            break;
+        } 
+        t += max(h, precis*2.);
+    }
+    
+    if(  t > 500.) return -1.;
+    ro = ro + rd*t;
+    nor1 = calcNormal(ro);
+    ro += 0.02*nor1;
+    rd = reflect( rd, nor1 );
+    t = 0.0;
+    h = precis*2.0;
+    mld = 10.;
+    
+    for( int i=0; i < MARCHSTEPSREFLECTION; i++ ) {
+        h = map( ro+rd*t );
+		if(dL < mld){
+			mld=dL;            
+            lint2.xyz = ro+rd*t;
+			lint2.w = abs(dL);
+		}
+        if( h < precis ) {
+   			int2.xyz = ro+rd*t;
+            return 1.;
+        }   
+        t += max(h, precis*2.);
+    }
+
+    return 0.;
+}
+
+//----------------------------------------------------------------------
+// shade
+
+vec3 shade( in vec3 ro, in vec3 pos, in vec3 nor ) {
+    vec3  col = vec3(0.5);
+    
+  
+    //根据法向量为物体着上背景颜色
+    float sh = clamp( dot( nor, normalize( vec3( -0.3, 0.3, -0.5 ) ) ), 0., 1.);
+  	col *= (sh * backgroundColor);  
+     
+     //这里表示如果打到两侧，就根据y，z每个方块中产生一个随机数，根据这个随机数
+     //确定方块颜色
+    if( abs( pos.x ) > 12.9 && pos.y > 3.) {
+        float ha = hash(  133.1234*floor( pos.y / 3. ) + floor( (pos.z) / 3. ) + floor(2. * iTime)) ;
+        col = pow(ha,5.) *  vec3( 1., 0.7, 0.4 );
+        
+    }
+    //着色的时候考虑，着色点受到背景环境的影响，如果足够远的话，就变为背景颜色
+	col = mix(  backgroundColor, col, exp( -0.12*distance(pos, ro) ) );
+  
+    return col;
+}
+
+vec3 getLightColor( in vec3 pos ) {
+    vec3 lcol = vec3( 1., .7, .5 );
+    
+	vec3 pd = pos;
+    pd.x = abs( pd.x );
+    pd.z *= -sign( pos.x );
+    
+    //水平的霓虹灯长度为13，所以每13作为一个单元格
+    if( pd.y > 2. && abs(pd.x) > 10. && pd.y < 5. ) {
+        float fl = floor( pd.z/13. ) + floor(iTime);
+        lcol = 0.4*lcol+0.5*vec3( hash( .1562+fl ), hash( .423134+fl ), 0. );
+    }
+    //每个垂直的霓虹灯在一个整数范围内，所以可以这样为霓虹灯添加随机颜色效果，
+    //确保每一个霓虹灯都在同一个颜色分块当中
+    if(  abs(pd.x) > 10. && pd.y > 5. ) {
+        float fl = floor( pd.z/2.) + floor(iTime);
+        lcol = 0.5*lcol+0.5*vec3( hash( .1562+fl ),  hash( .923134+fl ), hash( .423134+fl ) );
+    }
+   
+    return lcol;
+}
+
+
+
+//----------------------------------------------------------------------
+// main
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord ) {    
+    vec2 q = fragCoord.xy / iResolution.xy;
+	vec2 p = -1.0 + 2.0*q;
+	p.x *= iResolution.x / iResolution.y;
+        
+
+    
+        // camera
+        float z = time;
+        float x = sin(time*0.2);
+        vec3 ro = vec3(x,1.3+.3*cos(time*0.26), z-1.);
+        vec3 ta = vec3(x,1.3+.4*cos(time*0.26), z+4.+cos(time*0.04));
+
+        vec3 ww = normalize( ta - ro );
+        vec3 uu = normalize( cross(ww,vec3(0.0,1.0,0.0) ) );
+        vec3 vv = normalize( cross(uu,ww));
+        vec3 rd = normalize( -p.x*uu + p.y*vv + 2.2*ww );
+
+        vec3 col = backgroundColor;
+
+        // raymarch
+        float ints = intersect(ro ,rd );
+        if(  ints > -0.5 ) {
+
+            // calculate reflectance
+            float r = 0.09;     	        
+            if( int1.y > 0.129 ) r = 0.025 * hash(  133.1234*floor( int1.y / 3. ) + floor( int1.z / 3. ) );
+            if( abs(int1.x) < 8. ) {
+                if( int1.y < 0.01 ) { // road
+                    r = 0.05*fbm(int1.xz);
+                } else { // car
+                    r = 0.02;
+                }
+            }
+            if( abs( int1.x ) < 0.1 ) r *= 4.;
+            if( abs( abs( int1.x )-7.4 ) < 0.1 ) r *= 4.;
+
+            r *= 2.;
+
+            col = shade( ro, int1.xyz, nor1 );
+            //为第一段光线增加光照
+            if(lint1.w > 0. ){
+                vec3 lightCol = (0.2*LIGHTINTENSITY*exp(-lint1.w*7.0)) * getLightColor(lint1.xyz);
+                col += mix(  backgroundColor, lightCol, exp( -0.00001*distance(lint1.xyz, ro) ) );
+            }
+            //为第二段反射增加光照
+            if( lint2.w > 0. ) {
+                vec3 lightCol = (.1*LIGHTINTENSITY*exp(-lint2.w*8.0)) * getLightColor(lint2.xyz);
+                col += mix(  backgroundColor, lightCol, exp( -0.00001*distance(lint2.xyz, ro) ) );
+            } 
+            if( ints > 0.5 ) {
+                col += r * shade( ro, int2.xyz, calcNormalSimple(int2.xyz) );
+            }     
+        } 
+
+        // post processing
+        col = pow( clamp(col,0.0,1.0), vec3(0.4545) );
+        col *= 1.2*vec3(1.,0.99,0.95);   
+        col = clamp(1.06*col-0.03, 0., 1.);  
+        q.y = (q.y-.12)*(1./0.76);
+        col *= 0.5 + 0.5*pow( 16.0*q.x*q.y*(1.0-q.x)*(1.0-q.y), 0.1 ); 
+
+        fragColor = vec4( col, 1.0 );
+    
+}

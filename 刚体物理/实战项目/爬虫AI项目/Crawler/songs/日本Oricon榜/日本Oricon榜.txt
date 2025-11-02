@@ -1,0 +1,15 @@
+
+[{"songName":"Bling-Bang-Bang-Born - (TV动画《物理魔法使马修：神觉者候补选拔试验篇》片头曲)","songLink":"https://music.163.com/song?id=2107565588"},{"songName":"ひとみ"
+,"songLink":"https://music.163.com/song?id=2127784980"},{"songName":"オレンジ - (橘涩（剧场版《排球少年!! 垃圾场决战》主题曲）)","songLink":"https://music.163.com/so
+ng?id=2122881592"},{"songName":"Aqua","songLink":"https://music.163.com/song?id=2123355571"},{"songName":"晴る - (放晴 (TV动画《葬送的芙莉莲》片头曲2))","son
+gLink":"https://music.163.com/song?id=2114614108"},{"songName":"アンビバレント - (Ambivalent)","songLink":"https://music.163.com/song?id=2118440517
+"},{"songName":"FREEDOM - (剧场版《机动战士高达SEED FREEDOM》主题曲)","songLink":"https://music.163.com/song?id=2116627099"},{"songName":"幾億光年 - (日剧《Eye L
+ove You》主题曲)","songLink":"https://music.163.com/song?id=2116428123"},{"songName":"Value","songLink":"https://music.163.com/song?id=212911733
+0"},{"songName":"何色でもない花 - (无色之花 日剧《因为你把心给了我》主题曲)","songLink":"https://music.163.com/song?id=2121901336"},{"songName":"唱","songLink":"https:
+//music.163.com/song?id=2079797137"},{"songName":"花になって - Be a flower - (TV动画《药屋少女的呢喃》片头曲)","songLink":"https://music.163.com/song?id=209018
+9914"},{"songName":"宝者 - (宝物)","songLink":"https://music.163.com/song?id=2121945030"},{"songName":"勇者 - (TV动画《葬送的芙莉莲》片头曲)","songLink":"https
+://music.163.com/song?id=2083182016"},{"songName":"晩餐歌","songLink":"https://music.163.com/song?id=2120442088"},{"songName":"アイドル - (偶像 (TV动画
+《【我推的孩子】》片头曲))","songLink":"https://music.163.com/song?id=2034742057"},{"songName":"二度寝 - (日剧《不合适也要有个限度!》主题曲)","songLink":"https://music.163
+.com/song?id=2116521398"},{"songName":"Sleep Walking Orchestra - (梦游交响乐团)","songLink":"https://music.163.com/song?id=2104714857"},{"songName
+":"ケセラセラ - (顺其自然)","songLink":"https://music.163.com/song?id=2042122569"},{"songName":"HELLO WORLD","songLink":"https://music.163.com/song?i
+d=2124454858"}]

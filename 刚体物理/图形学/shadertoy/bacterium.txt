@@ -1,0 +1,143 @@
+// Created by Vinicius Graciano Santos - vgs/2014
+// This shader needs some serious work on collision avoidance :D
+// http://viniciusgraciano.com/blog/making-of-bacterium/
+
+#define STEPS 128
+#define EPS 0.002
+#define FAR 18.0
+#define PI 3.14159265359
+#define BGCOLOR vec3(12.,23.,15.)/255.
+
+//实现两个geometry的光滑并
+float smin(float a, float b, float k) {
+    float h = clamp(.5+.5*(b-a)/k, 0.0, 1.0 );
+    return mix(b,a,h)-k*h*(1.-h);
+}
+
+mat2 rot(float angle){
+    float c = cos(angle);
+    float s = sin(angle);
+    return mat2(c,s,-s,c);
+}
+
+vec2 rep(vec2 p) {
+    float a = atan(p.y, p.x);
+    a = mod(a, 2.0*PI/6.) - PI/6.;
+    return length(p)*vec2(cos(a), sin(a));
+}
+//返回球状细菌的sdf
+float spikedBall(vec3 p) {
+    // 这行代码可以让 p 在 [8i,8j,8k]->[8i+8,8j+8,8k+8]的区间不断取到相同的值
+    // 而且在每个小方块当中， 可以让 [8i + 4, 8j+4, 8k +4]作为这个小方块的原点，从而实现这个物体在
+    // 在空间中不断无限排列
+    p = mod(p, 8.0) - 4.0;
+    float xPassedTime = 0.3 * iTime + 0.21;
+    float yPassedTime = 0.3 * iTime + 0.67;
+    float zPassedTime = 0.3 * iTime + 0.49;
+    p.x -= 0.52 * (2. * min(fract(xPassedTime),1.- fract(xPassedTime)) - 0.5);
+    p.y -= 0.32 * (2. * min(fract(yPassedTime),1.- fract(yPassedTime)) - 0.5);
+    p.z -= 0.21 * (2. * min(fract(zPassedTime),1.- fract(zPassedTime)) - 0.5);
+    p.xy = p.xy * rot(0.15 * iTime);
+    p.yz = p.yz * rot(0.23 * iTime);
+
+    float d = length(p) - 1.2;
+    p.xz = rep(p.xz); p.xy = rep(p.xy); 
+    //return dot(p.yz,p.yz)-0.03+abs(0.055*(p.x-1.0));
+    return smin(d, dot(p.yz,p.yz)-0.07+abs(0.08*(p.x-1.0)), 0.1);
+}
+
+float capsules(vec3 p) {
+    //这个是小方块的编号
+    vec3 q = floor(p/4.0);
+    // 其实这个小方块和之前球体方块的关系在于，一个球体方块恰好包含四个小的胶囊方块
+    // 所以可以看作这个capsule的重复包含在之前球状菌的重复
+    p = mod(p, 4.0) - 2.0;
+    p.yz = p.yz*cos(iTime + q.z) + vec2(-p.z, p.y)*sin(iTime + q.z);
+    p.xy = p.xy*cos(iTime + q.x) + vec2(-p.y, p.x)*sin(iTime + q.x);
+    p.zx = p.zx*cos(iTime + q.y) + vec2(-p.x, p.z)*sin(iTime + q.y);
+    
+    float angle = .3*cos(iTime)*p.x;
+    p.xy = cos(angle)*p.xy + sin(angle)*vec2(-p.y, p.x); 
+	p.x += 1.0; 
+    float k = clamp(2.0*p.x/4.0, 0.0, 1.0); 
+	p.x -= 2.*k;
+    return length(p) - .5;
+}
+//返回球状细菌和杆菌的sdf的并集
+float map(vec3 p) {   
+   return min(spikedBall(p), capsules(p));
+}
+//返回任何一点sdf函数的的法向量的值
+vec3 normal(vec3 p) {
+    vec2 q = vec2(0.0, EPS);
+    return normalize(vec3(map(p + q.yxx) - map(p - q.yxx),
+                          map(p + q.xyx) - map(p - q.xyx),
+                          map(p + q.xxy) - map(p - q.xxy)));
+}
+
+float cubeMap(vec3 p, vec3 n) {
+    float a = texture(iChannel0, p.yz).r;
+    float b = texture(iChannel0, p.xz).r;
+    float c = texture(iChannel0, p.xy).r;
+    n = abs(n);
+    return (a*n.x + b*n.y + c*n.z)/(n.x+n.y+n.z);   
+}
+
+vec3 bumpMap(vec3 p, vec3 n, float c) {
+    vec2 q = vec2(0.0, .5);
+	vec3 grad = -1.0*(vec3(cubeMap(p+q.yxx, n), cubeMap(p+q.xyx, n), cubeMap(p+q.xxy, n))-c)/q.y;
+    // t是一个与sdf场中与n垂直平面内的向量，这样构造可以使得向量n向旁边轻度倾斜，但是又不失去n本身的主要特征
+    // 这样构造以后还是可以使得边缘比较亮，从而重新构造物体表面的normal向量，使得物体呈现出一种轻微的凹凸感
+    vec3 t = grad - n*dot(grad, n)/dot(n,n);
+    return normalize(n + 0.5 * t);
+}
+
+vec3 shade(vec3 ro, vec3 rd, float t) {
+    vec3 p = ro + t*rd, n = normal(p);
+   
+    vec3 green = pow(vec3(190,166,33)/255., vec3(2.2));
+    vec3 yellow = pow(vec3(96,78,39)/255., vec3(2.2));
+    
+    float k = cubeMap(.1*p, n);
+    n = bumpMap(.5*p, n, k);
+    //这个非常关键 注意在胶囊非边缘附近，胶囊本身的法线方向与视野的法线方向投影较大，此时颜色应该比较暗
+    //而边缘体附近本身法线与视野法线投影小，因而要比较亮，这里应用了一个基本光学规律
+    
+    //所以应用这个规律以后棱角看的很清楚，第一部分是颜色，第二部分度量法线与视野的关系来评估明暗程度
+    vec3 col = mix(green, yellow, k)*clamp(pow(1.0-dot(-rd,n),3.2)+0.08,0.,1.);
+
+    //这里逐步融入了一个背景颜色，类似于天空混色
+    return mix (BGCOLOR,col,exp(-.006*t * t) );
+   
+}
+
+mat3 lookat(vec3 target, vec3 origin) {
+    vec3 z = normalize(target - origin);
+    vec3 x = cross(z, vec3(0.0, 1.0, 0.0));
+    return mat3(x, cross(x, z), z);
+}
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
+   
+	vec2 uv = (iResolution.xy - 3. *fragCoord.xy) / iResolution.y;
+    //uv *= 1.0 + .1*dot(uv,uv);
+    //设置相机
+    vec3 ro = vec3(iTime, iTime, cos(iTime));
+    vec3 rd = normalize(lookat( ro+vec3(cos(.1*iTime), sin(.1*iTime), 1.0),ro)*vec3(uv, -1.0)); 
+   
+    vec3 col = vec3(0.0);
+    float t = 0.0; 
+    float d = 0.;
+    for (int i = 0; i < STEPS; ++i) {
+        d = map(ro + t*rd);
+        if (d < EPS || t > FAR) break;
+        //这里修改了光线追踪的步长公式，相当于步长动态变化，如果h比较大，说明离物体远
+        //则步长大，反之步长较小
+        t += 0.6 * d + 0.002 * t; 
+    }
+   // 给细菌表面着色, 如果没有打到细菌上，投射背景颜色
+    col = d < EPS ? shade(ro, rd, t) : BGCOLOR;
+    col = smoothstep(0., .7, col);
+    col = pow(col, vec3(1./2.2));
+	fragColor = vec4(col,1.0);
+}

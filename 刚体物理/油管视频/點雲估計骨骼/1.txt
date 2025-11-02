@@ -1,0 +1,42 @@
+root           x,y,z  ,旋轉方向 theta1,theta2,theta3
+atlas          l1      旋轉方向: 0, 0, theta4
+pelvis         l2      旋轉方向: 0, 0, theta5
+left_shoulder  l3      旋轉方向: 0, 0, theta5
+right_shoulder l3      旋轉方向: 0, 0, theta6
+left_hip.      l4      旋轉方向: 0, 0, theta7
+right_hip.     l4      旋轉方向: 0, 0, theta8
+left_elbow.    l5      旋轉方向: theta9, theta10, theta11
+right_elbow.   l5      旋轉方向: theta12, theta13, theta14
+left_knee      l6      旋轉方向: theta15, theta16, theta17
+right_knee     l6      旋轉方向: theta18, theta19, theta20
+left_wrist.    l7      旋轉方向: 0, theta21, 0
+right_wrist.   l7      旋轉方向: 0, theta22, 0
+left_ankle.    l8      旋轉方向: 0, theta23, 0
+right_ankle.   l8      旋轉方向: 0, theta24, 0
+head.          l9      旋轉方向: theta25, theta26, theta27
+
+x = params[0]， 
+y = parma[1]
+z = param[2]
+l1,l2,l3,l4,l5,l6,l7,l8,l9 = param[3:12]
+theta1,theta2,theta3,theta4,theta5,theta6,theta7,theta8 = param[12:20]
+theta9,theta10,theta11,theta12,theta13,theta14,theta15,theta16 = param[20:28]
+theta17,theta18,theta19,theta20,theta21,theta22,theta23,theta24 = param[28:36]
+theta25,theta26,theta27 = param[36:39]
+
+def parms2Points(parms:jnp.array)->jnp.array:
+max(0.1-l1,0)**2 + max(0.1-l2,0)**2 + max(0.1 - l3,0)**2 + smax(0.1 - l4,0)**2+ max(0.1 - l5,0)**2 + max(0.1 - l6,0)**2 + max(0.1 - l7,0)**2 + max(0.1 - l8,0)**2 + max(0.1 - l9,0)**2
+0<=cos(theta21)<=1
+0<=cos(theta22)<=1
+0<=cos(theta23)<=1
+0<=cos(theta24)<=1
+cos(atlas2left_shoulder,atlas2right_shoulder) = -1
+cos(pelvis2left_hip,pelvis2right_hip) = -1
+cos(root2atlas,root2pelvis) = -1
+cos(atlas2left_shoulder,pelvis2left_hip) = 1
+cos(atlas2right_shoulder,pelvis2right_hip) = 1
+0<=cos(atlas2left_shoulder,left_shoulder2left_elbow)<=1
+0<=cos(atlas2right_shoulder,right_shoulder2right_elbow)<=1
+0<=cos(pelvis2left_hip,left_hip2left_knee)<=1
+0<=cos(pelvis2right_hip,right_hip2right_knee)<=1
+

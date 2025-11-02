@@ -1,0 +1,40 @@
+{
+  "name": "nodejs_exercise",
+  "version": "1.0.0",
+  "description": "this package is used for exercising",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@infobip-api/sdk": "^0.3.2",
+    "axios": "^1.6.7",
+    "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0-rc.12",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.2.0",
+    "datauri": "^4.1.0",
+    "geoip-lite": "^1.4.10",
+    "he": "^1.2.0",
+    "infobip": "^0.1.0",
+    "jsdom": "^24.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment-timezone": "^0.5.44",
+    "node-rsa": "^1.1.1",
+    "openai": "^4.26.0",
+    "puppeteer": "^22.6.0",
+    "readline-sync": "^1.4.10",
+    "rsa-key-gen": "^0.6.1",
+    "sharp": "^0.33.2",
+    "spark-md5": "^3.0.2",
+    "striptags": "^3.2.0",
+    "typeorm": "^0.3.19",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "ytdl": "^1.4.1",
+    "ytdl-core": "^4.11.5"
+  }
+}

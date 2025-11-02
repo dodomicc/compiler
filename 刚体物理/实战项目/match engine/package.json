@@ -1,0 +1,27 @@
+{
+  "name": "match-engine-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "initialize": "npm install",
+    "compile": "tsc",
+    "start": "tsc  && node ./dist/index.js",
+    "benchmark-test": "tsc && node ./dist/benchmarkTest.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "^9.1.2",
+    "data-structure-typed": "^1.52.0",
+    "denque": "^2.1.0",
+    "functional-red-black-tree": "^1.0.1",
+    "ioredis": "^5.4.1",
+    "typescript": "^5.4.5",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/functional-red-black-tree": "^1.0.6"
+  }
+}

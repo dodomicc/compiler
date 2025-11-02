@@ -1,0 +1,33 @@
+
+[{"songName":"春雪","songLink":"https://music.163.com/song?id=2137074704"},{"songName":"窒 Suffocating","songLink":"https://music.163.com/song?
+id=2105316376"},{"songName":"We Never","songLink":"https://music.163.com/song?id=2107647529"},{"songName":"I'll Do It(PHONK)","songLink":"ht
+tps://music.163.com/song?id=2123176045"},{"songName":"I'll Do It(必杀)","songLink":"https://music.163.com/song?id=2127432751"},{"songName":"君临
+天下","songLink":"https://music.163.com/song?id=2110785499"},{"songName":"this is what winter feels like - (何为凛冬)","songLink":"https://music.1
+63.com/song?id=2116728806"},{"songName":"New Agee(Deep Phonk)","songLink":"https://music.163.com/song?id=2125394200"},{"songName":"SO TIRED 
+ROCK","songLink":"https://music.163.com/song?id=2092188841"},{"songName":"Fast Cars & Superstars (Extended)","songLink":"https://music.163.c
+om/song?id=2133568636"},{"songName":"lll Do lt (PHONK Slow) - (我会做的 (冯克 慢速))","songLink":"https://music.163.com/song?id=2099083702"},{"songN
+ame":"safe space (feat. RJ Pasin)","songLink":"https://music.163.com/song?id=2118612076"},{"songName":"Drama","songLink":"https://music.163.
+com/song?id=2098451525"},{"songName":"只因是你 - (Call You Tonight)","songLink":"https://music.163.com/song?id=2109255683"},{"songName":"可是我对你的爱
+ （像鱼坠入深海）","songLink":"https://music.163.com/song?id=2124042561"},{"songName":"Zhurek (Isko Alvarez remix)","songLink":"https://music.163.co
+m/song?id=2106581595"},{"songName":"Tired so Problems","songLink":"https://music.163.com/song?id=2120139482"},{"songName":"Fast Cars & Super
+stars (Radio)","songLink":"https://music.163.com/song?id=2133567415"},{"songName":"All My People (鹿紫云一)","songLink":"https://music.163.com/s
+ong?id=2087320196"},{"songName":"理智永远占上风","songLink":"https://music.163.com/song?id=2121950523"},{"songName":"escapephonk - (逃跑)","songLink"
+:"https://music.163.com/song?id=2119765745"},{"songName":"未必（孤独的岛躺在大海的怀抱) - (抖音热播版)","songLink":"https://music.163.com/song?id=2133534563"},
+{"songName":"GIMME(必杀)","songLink":"https://music.163.com/song?id=2135518885"},{"songName":"Breathin'","songLink":"https://music.163.com/son
+g?id=2100363530"},{"songName":"After Hours","songLink":"https://music.163.com/song?id=2118703188"},{"songName":"Call You Tonight(以为真爱无敌)","s
+ongLink":"https://music.163.com/song?id=2134514027"},{"songName":"Rhythm Of The Water","songLink":"https://music.163.com/song?id=2134540662"
+},{"songName":"有本事去波兰街走一走","songLink":"https://music.163.com/song?id=2120776575"},{"songName":"Memory Reboot x Time to Pretend","songLink":"
+https://music.163.com/song?id=2084473227"},{"songName":"next to you","songLink":"https://music.163.com/song?id=2074959561"},{"songName":"Out
+ Of The World","songLink":"https://music.163.com/song?id=2124103398"},{"songName":"The Sound of Silence (CYRIL Remix)","songLink":"https://m
+usic.163.com/song?id=2122757115"},{"songName":"LOW(PHONK)","songLink":"https://music.163.com/song?id=2114080723"},{"songName":"行万里路见天地广阔","s
+ongLink":"https://music.163.com/song?id=2121126676"},{"songName":"lll Do lt (PHONK Slow)","songLink":"https://music.163.com/song?id=21135808
+96"},{"songName":"Tropical time","songLink":"https://music.163.com/song?id=2130933165"},{"songName":"客家话1234","songLink":"https://music.163.
+com/song?id=2127501856"},{"songName":"Gangsta (狂王)","songLink":"https://music.163.com/song?id=2124122680"},{"songName":"イガク - (医学)","songLin
+k":"https://music.163.com/song?id=2132901814"},{"songName":"Relax (PHONK)","songLink":"https://music.163.com/song?id=2128615946"},{"songName
+":"Sea Of Tired（Slowed）","songLink":"https://music.163.com/song?id=2108191414"},{"songName":"Count Me Out","songLink":"https://music.163.com
+/song?id=2126937193"},{"songName":"NU(Version+Slow)","songLink":"https://music.163.com/song?id=2095198970"},{"songName":"Once Upon A Time (H
+ouse Extended Mix)","songLink":"https://music.163.com/song?id=2114626539"},{"songName":"Bushido (情深意重)","songLink":"https://music.163.com/so
+ng?id=2133203579"},{"songName":"枷锁","songLink":"https://music.163.com/song?id=2130063750"},{"songName":"Ain't My Fault（LISA&JENNIE完整） - (完整)
+","songLink":"https://music.163.com/song?id=2115615008"},{"songName":"Void - (授权加速版)","songLink":"https://music.163.com/song?id=2098784510"}
+,{"songName":"MONTAGEM CORAL","songLink":"https://music.163.com/song?id=2102766948"},{"songName":"玉米","songLink":"https://music.163.com/song
+?id=2126023995"}]

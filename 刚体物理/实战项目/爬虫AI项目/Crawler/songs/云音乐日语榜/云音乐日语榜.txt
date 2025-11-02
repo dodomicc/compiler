@@ -1,0 +1,8 @@
+
+[{"songName":"Swag","songLink":"https://music.163.com/song?id=2108072250"},{"songName":"Bling-Bang-Bang-Born - (TV动画《物理魔法使马修：神觉者候补选拔试验篇》片头曲)
+","songLink":"https://music.163.com/song?id=2107565588"},{"songName":"Moshi Moshi (feat. 百足)","songLink":"https://music.163.com/song?id=2119
+517202"},{"songName":"満ちてゆく","songLink":"https://music.163.com/song?id=2135625944"},{"songName":"晴る - (放晴 (TV动画《葬送的芙莉莲》片头曲2))","songLink":"h
+ttps://music.163.com/song?id=2114614108"},{"songName":"勇者 - (TV动画《葬送的芙莉莲》片头曲)","songLink":"https://music.163.com/song?id=2083182016"},{"song
+Name":"Automatic (2024 Mix)","songLink":"https://music.163.com/song?id=2137875103"},{"songName":"「僕は...」 - (我是...)","songLink":"https://musi
+c.163.com/song?id=2112531307"},{"songName":"Moshi Moshi (feat. 百足) [Sped up]","songLink":"https://music.163.com/song?id=2119754300"},{"songN
+ame":"bliss - (TV动画《葬送的芙莉莲》特别片尾曲)","songLink":"https://music.163.com/song?id=2118435473"}]

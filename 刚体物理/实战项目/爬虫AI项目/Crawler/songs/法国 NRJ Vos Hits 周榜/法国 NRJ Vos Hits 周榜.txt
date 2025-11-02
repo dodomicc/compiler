@@ -1,0 +1,10 @@
+
+[{"songName":"Memento","songLink":"https://music.163.com/song?id=2055368676"},{"songName":"Is It Love","songLink":"https://music.163.com/son
+g?id=2090559323"},{"songName":"Loca Loca","songLink":"https://music.163.com/song?id=2095851455"},{"songName":"Madrid City","songLink":"https
+://music.163.com/song?id=2083118073"},{"songName":"Beautiful Things","songLink":"https://music.163.com/song?id=2117911937"},{"songName":"I C
+an Feel","songLink":"https://music.163.com/song?id=2081946366"},{"songName":"Je cours","songLink":"https://music.163.com/song?id=19040182"},
+{"songName":"I love you","songLink":"https://music.163.com/song?id=2106659211"},{"songName":"Ceux qu'on était","songLink":"https://music.163
+.com/song?id=2124261419"},{"songName":"Je suis fou","songLink":"https://music.163.com/song?id=2130164426"},{"songName":"Children of the Sky 
+(a Starfield song)","songLink":"https://music.163.com/song?id=2077882779"},{"songName":"greedy","songLink":"https://music.163.com/song?id=20
+80331573"},{"songName":"Overdrive (feat. Norma Jean Martine)","songLink":"https://music.163.com/song?id=2095553084"},{"songName":"Cruel Summ
+er","songLink":"https://music.163.com/song?id=1382576173"},{"songName":"Gimme Love","songLink":"https://music.163.com/song?id=2081096098"}]

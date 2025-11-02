@@ -1,0 +1,74 @@
+float sdPillar(vec3 pos){
+    float d = 1e27;
+    float height = 10.;
+    float h = pos.y/height;
+    float theta = atan(pos.x,pos.z);
+    d = length(pos.xz) - (1. + 0.2 * S(0.5,1.,abs(sin( 4. * theta))))*mix(1.,0.6,h);
+    d = smax(d,h -1.,0.01);
+    d = smax(d,-h,0.01);
+    h = (pos.y - 10.);
+    float xzRatio = 0.8 + 0.2 * sin(4. * PI * h);
+    d = smin(d,sdBox(vec3(pos - vec3(0.,10.5,0.)), 0.5 * vec3(1.9* xzRatio,1.,1.9* xzRatio) - 0.1)-0.1, 0.1); 
+    return d * 0.7;
+}
+
+float sdPillars(vec3 pos){
+    vec3 p = pos;
+    p.x = 8. - sabs(pos.x,0.1);
+    p.z = mod(pos.z,4.) - 2.;
+    float d = 1e27;
+    d = sdPillar(p);
+    d = smax(d,sabs(pos.z,0.1) - 20.,0.1);
+    return d * 0.5;
+    
+}
+
+float sdFloor(vec3 pos){
+    vec3 p = pos;
+    p.x = mod(p.x,4.) - 2.;
+    p.z = mod(p.z,4.) - 2.;
+    p.y -= -0.5;
+
+    float d1 = sdBox(p,vec3(1.95,0.55,1.95)- 0.1) - 0.1;
+    d1 = smax(d1, sabs(pos.x,0.1) - 12., 0.1);
+    d1 = smax(d1, sabs(pos.z,0.1) - 20., 0.1);
+    
+    p = pos;
+    p.x = mod(p.x+2.,4.) -2.;
+    p.z = mod(p.z+2.,4.) -2.;
+    p.y -= -1.5;
+    float d2 = sdBox(p,vec3(1.95,0.5,1.95)- 0.1) - 0.1;
+    d2 = smax(d2, sabs(pos.x,0.1) - 14., 0.1);
+    d2 = smax(d2, sabs(pos.z,0.1) - 22., 0.1);
+    
+     
+     
+     float d = d1;
+     d = smin(d,d2,0.1);
+     
+     
+    return d * 0.5;
+}
+
+float sdCeil(vec3 pos){
+    vec3 p = pos;
+    p.y -= 10.6;
+    float d = 1e27;
+    p.y -= 0.8;
+    d = sdBox(p , vec3(10.,0.5,19.5) - 0.1) - 0.1; 
+    p.y -= 0.5;
+    float d2 = p.y - 5.;
+    d2 = smax(d2, p.y - remap(0.,10.,4.,-0.1,sabs(p.x,0.001)),0.01);
+    d2 = smax(d2, -(p.y - remap(0.,10.,3.5,-0.6,sabs(p.x,0.001))),0.01);
+    d2 = smax(d2,sabs(p.z,0.1) - 19.6,0.001);
+    d2 = smax(d2,sabs(p.x,0.1) - 10.8,0.001);
+    d = smin(d,d2,0.1);
+    return d * 0.5;
+}
+
+float sdTemple(vec3 pos){
+
+    float d = smin(sdPillars(pos),sdFloor(pos),0.3);
+    d = smin(d, sdCeil(pos),0.01);
+    return d;
+}

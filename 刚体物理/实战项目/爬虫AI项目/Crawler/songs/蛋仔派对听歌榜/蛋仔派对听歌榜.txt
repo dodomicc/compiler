@@ -1,0 +1,8 @@
+
+[{"songName":"放屁的歌","songLink":"https://music.163.com/song?id=1806471371"},{"songName":"注意看，是蛋仔 - (《蛋仔派对》皮蛋节推广曲)","songLink":"https://music.
+163.com/song?id=2033902385"},{"songName":"呓语","songLink":"https://music.163.com/song?id=1417862046"},{"songName":"紫荆花盛开 - (香港回归祖国25周年主题歌曲)",
+"songLink":"https://music.163.com/song?id=1959528822"},{"songName":"Timber","songLink":"https://music.163.com/song?id=1340890767"},{"songNam
+e":"蛋仔夜未眠 - (《蛋仔派对》蛋仔小乐团系列)","songLink":"https://music.163.com/song?id=2074159414"},{"songName":"反诈蛋之歌 - (《蛋仔派对》X淄博市公安局高新区分局 反诈主题宣传曲)","song
+Link":"https://music.163.com/song?id=2085489164"},{"songName":"BACK SEAT - (热播版)","songLink":"https://music.163.com/song?id=2116533072"},{"s
+ongName":"Go Again (feat. ELYSA)","songLink":"https://music.163.com/song?id=1952112969"},{"songName":"Souvenir","songLink":"https://music.16
+3.com/song?id=1439184760"}]

@@ -1,0 +1,58 @@
+
+[{"songName":"we can't be friends (wait for your love)","songLink":"https://music.163.com/song?id=2133503236"},{"songName":"Lose Control","s
+ongLink":"https://music.163.com/song?id=2057234990"},{"songName":"Beautiful Things","songLink":"https://music.163.com/song?id=2117911937"},{
+"songName":"CARNIVAL (feat. Rich The Kid, Playboi Carti)","songLink":"https://music.163.com/song?id=2125538091"},{"songName":"Lovin On Me","
+songLink":"https://music.163.com/song?id=2098021631"},{"songName":"act ii: date @ 8 (feat. Drake) [remix]","songLink":"https://music.163.com
+/song?id=2133369610"},{"songName":"greedy","songLink":"https://music.163.com/song?id=2080331573"},{"songName":"I Remember Everything (feat. 
+Kacey Musgraves)","songLink":"https://music.163.com/song?id=2075916667"},{"songName":"yes, and?","songLink":"https://music.163.com/song?id=2
+134444389"},{"songName":"Snooze","songLink":"https://music.163.com/song?id=2004563430"},{"songName":"Agora Hills","songLink":"https://music.
+163.com/song?id=2083403742"},{"songName":"Cruel Summer","songLink":"https://music.163.com/song?id=1382576173"},{"songName":"Saturn","songLin
+k":"https://music.163.com/song?id=2128787688"},{"songName":"Stick Season","songLink":"https://music.163.com/song?id=1989318036"},{"songName"
+:"the boy is mine","songLink":"https://music.163.com/song?id=2133503227"},{"songName":"supernatural","songLink":"https://music.163.com/song?
+id=2133503983"},{"songName":"Last Night","songLink":"https://music.163.com/song?id=2027162625"},{"songName":"Water","songLink":"https://musi
+c.163.com/song?id=2066953372"},{"songName":"Fast Car","songLink":"https://music.163.com/song?id=2030754234"},{"songName":"End of Beginning",
+"songLink":"https://music.163.com/song?id=1966970103"},{"songName":"redrum","songLink":"https://music.163.com/song?id=2116632187"},{"songNam
+e":"eternal sunshine","songLink":"https://music.163.com/song?id=2133503992"},{"songName":"Whatever She Wants","songLink":"https://music.163.
+com/song?id=2125141121"},{"songName":"bye","songLink":"https://music.163.com/song?id=2133503223"},{"songName":"Thinkin’ Bout Me","songLink":
+"https://music.163.com/song?id=2027162848"},{"songName":"Is It Over Now? (Taylor's Version) (From The Vault)","songLink":"https://music.163.
+com/song?id=2092285359"},{"songName":"don't wanna break up again","songLink":"https://music.163.com/song?id=2133503981"},{"songName":"Made F
+or Me","songLink":"https://music.163.com/song?id=2082371151"},{"songName":"true story","songLink":"https://music.163.com/song?id=2133503994"
+},{"songName":"Houdini","songLink":"https://music.163.com/song?id=2097627772"},{"songName":"Paint The Town Red","songLink":"https://music.16
+3.com/song?id=2068309400"},{"songName":"Feather","songLink":"https://music.163.com/song?id=2031003572"},{"songName":"Never Lose Me","songLin
+k":"https://music.163.com/song?id=2135710817"},{"songName":"What Was I Made For? - (电影《芭比》原声)","songLink":"https://music.163.com/song?id=206
+5100111"},{"songName":"TRUCK BED","songLink":"https://music.163.com/song?id=1982113019"},{"songName":"imperfect for you","songLink":"https:/
+/music.163.com/song?id=2133503987"},{"songName":"intro (end of the world)","songLink":"https://music.163.com/song?id=2133503980"},{"songName
+":"i wish i hated you","songLink":"https://music.163.com/song?id=2133503986"},{"songName":"Selfish","songLink":"https://music.163.com/song?i
+d=2120005799"},{"songName":"Yeah Glo!","songLink":"https://music.163.com/song?id=2125241874"},{"songName":"Pretty Little Poison","songLink":
+"https://music.163.com/song?id=2073852248"},{"songName":"Wild Ones","songLink":"https://music.163.com/song?id=2087227023"},{"songName":"La D
+iabla","songLink":"https://music.163.com/song?id=2101575814"},{"songName":"Where the Wild Things Are","songLink":"https://music.163.com/song
+?id=2030753313"},{"songName":"exes","songLink":"https://music.163.com/song?id=2098659746"},{"songName":"vampire","songLink":"https://music.1
+63.com/song?id=2080218767"},{"songName":"The Painter","songLink":"https://music.163.com/song?id=2071613038"},{"songName":"FE!N (feat. Playbo
+i Carti)","songLink":"https://music.163.com/song?id=2068069291"},{"songName":"Man Made A Bar","songLink":"https://music.163.com/song?id=2027
+163628"},{"songName":"23","songLink":"https://music.163.com/song?id=1843718124"},{"songName":"Burn It Down","songLink":"https://music.163.co
+m/song?id=2046964862"},{"songName":"I Can Feel It - (如我所触)","songLink":"https://music.163.com/song?id=2083094105"},{"songName":"ordinary thi
+ngs","songLink":"https://music.163.com/song?id=2133503242"},{"songName":"Wildflowers and Wild Horses","songLink":"https://music.163.com/song
+?id=1965561243"},{"songName":"Praise Jah In The Moonlight","songLink":"https://music.163.com/song?id=2112548404"},{"songName":"Mamaw's House
+","songLink":"https://music.163.com/song?id=2086360080"},{"songName":"Everybody","songLink":"https://music.163.com/song?id=2106704147"},{"so
+ngName":"World on Fire","songLink":"https://music.163.com/song?id=2041085432"},{"songName":"Surround Sound","songLink":"https://music.163.co
+m/song?id=1995089745"},{"songName":"Soak City (Do it)","songLink":"https://music.163.com/song?id=2054150334"},{"songName":"Get In With Me","
+songLink":"https://music.163.com/song?id=2116056758"},{"songName":"One Of The Girls - (剧集《偶像漩涡》原声)","songLink":"https://music.163.com/song?i
+d=2058139099"},{"songName":"Breathe","songLink":"https://music.163.com/song?id=2127032071"},{"songName":"You Broke My Heart","songLink":"htt
+ps://music.163.com/song?id=2100564966"},{"songName":"Scared To Start","songLink":"https://music.163.com/song?id=2115785660"},{"songName":"Tr
+aining Season","songLink":"https://music.163.com/song?id=2126654120"},{"songName":"Murder On The Dancefloor","songLink":"https://music.163.c
+om/song?id=3415823"},{"songName":"One Call","songLink":"https://music.163.com/song?id=2095839801"},{"songName":"FTCU","songLink":"https://mu
+sic.163.com/song?id=2106703599"},{"songName":"Sensational","songLink":"https://music.163.com/song?id=2092147758"},{"songName":"Where It Ends
+","songLink":"https://music.163.com/song?id=1988520812"},{"songName":"Austin","songLink":"https://music.163.com/song?id=2092523756"},{"songN
+ame":"La Víctima","songLink":"https://music.163.com/song?id=2072067033"},{"songName":"Spin You Around (1/24)","songLink":"https://music.163.
+com/song?id=2121057164"},{"songName":"Bandit","songLink":"https://music.163.com/song?id=2136653544"},{"songName":"Oklahoma Smokeshow - (俄克拉荷
+马烟火秀)","songLink":"https://music.163.com/song?id=1963293831"},{"songName":"Mmhmm","songLink":"https://music.163.com/song?id=2087490074"},{"s
+ongName":"HARLEY QUINN","songLink":"https://music.163.com/song?id=2095459389"},{"songName":"PERRO NEGRO","songLink":"https://music.163.com/s
+ong?id=2090587086"},{"songName":"Home","songLink":"https://music.163.com/song?id=2118274451"},{"songName":"Like What (Freestyle)","songLink"
+:"https://music.163.com/song?id=2131152824"},{"songName":"née-nah","songLink":"https://music.163.com/song?id=2116634903"},{"songName":"BELLA
+KEO","songLink":"https://music.163.com/song?id=2106661441"},{"songName":"Holy Smokes","songLink":"https://music.163.com/song?id=2128238953"}
+,{"songName":"Let's Go","songLink":"https://music.163.com/song?id=2057423406"},{"songName":"Coal","songLink":"https://music.163.com/song?id=
+2064425135"},{"songName":"BURN","songLink":"https://music.163.com/song?id=2125538089"},{"songName":"Tucson Too Late","songLink":"https://mus
+ic.163.com/song?id=2023150780"},{"songName":"CONTIGO","songLink":"https://music.163.com/song?id=2126093839"},{"songName":"MY EYES","songLink
+":"https://music.163.com/song?id=2068068577"},{"songName":"Igual Que Un Ángel","songLink":"https://music.163.com/song?id=2116683158"},{"song
+Name":"Tourniquet","songLink":"https://music.163.com/song?id=2075916668"},{"songName":"FUK SUMN","songLink":"https://music.163.com/song?id=2
+125538090"}]
